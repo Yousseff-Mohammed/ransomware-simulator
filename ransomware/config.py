@@ -11,4 +11,4 @@ TARGET_PATHS = [
 LOG_FILE = 'encrypted_files.log'
 
 # RSA pulblic key file(used by ransomware)
-PUBLIC_KEY_FILE = 'public.pem'
+PUBLIC_KEY_FILE = 'ransomware/keys/public.pem'
