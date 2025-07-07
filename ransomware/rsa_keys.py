@@ -16,3 +16,6 @@ def encrypt_key(aes_key, public_key):
     cipher_rsa = PKCS1_OAEP.new(recipient_key) # Create an RSA cipher using OAEP padding
     encrypt_key = cipher_rsa.encrypt(aes_key) # Encrypth the AES key
     return base64.b64encode(encrypt_key) # Encode the result as base64 for safe storage
+
+
+# C:\Users\ymoha\Desktop\My-Github\ransomwaresimulator\

