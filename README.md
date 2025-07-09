@@ -35,7 +35,7 @@ Key educational areas:
 
 ```plaintext
 ransomware-simulator/
-├── main.py                         # Entry point (optional / combined logic)
+├── main.py                         # Entry point (optional / runs everything)
 │
 ├── decryptor/
 │   └── decryptor.py                # Decrypts files using RSA private key
@@ -43,15 +43,18 @@ ransomware-simulator/
 ├── encryptor/
 │   ├── encryptor.py                # Handles AES file encryption
 │   ├── file_walker.py              # Recursively finds target files
-│   ├── rsa_key.py                  # RSA public key operations
-│   ├── config.py                   # Global settings (paths, extensions, etc.)
+│   ├── rsa_keys.py                 # RSA public key operations
+│   ├── config.py                   # Global settings (paths, server, etc.)
 │   └── keys/
 │       └── public.pem              # RSA public key used for encryption
 │
 ├── server/
-│   ├── app.py                      # Flask-based C2 server + logs file metadata
-│   └── keys/
-│       └── private.pem             # RSA private key used for decryption
+│   ├── app.py                      # Flask C2 server + logs file metadata
+│   ├── keys/
+│   │   └── private.pem             # RSA private key used for decryption
+│   └── reports/
+│       └── *.txt                   # Encrypted file reports + AES keys (from clients)
+
 
 
 
