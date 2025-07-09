@@ -29,4 +29,29 @@ Key educational areas:
 - 🖥️ **Flask C2 Server**: Simulated backend server
 - 🔓 **Decryptor**: Safely decrypts files using RSA private key
 
+---
+
+## 📂 Project Structure
+
+```plaintext
+ransomware-simulator/
+├── main.py                         # Entry point (optional / combined logic)
+│
+├── decryptor/
+│   └── decryptor.py                # Decrypts files using RSA private key
+│
+├── encryptor/
+│   ├── encryptor.py                # Handles AES file encryption
+│   ├── file_walker.py              # Recursively finds target files
+│   ├── rsa_key.py                  # RSA public key operations
+│   ├── config.py                   # Global settings (paths, extensions, etc.)
+│   └── keys/
+│       └── public.pem              # RSA public key used for encryption
+│
+├── server/
+│   ├── app.py                      # Flask-based C2 server + logs file metadata
+│   └── keys/
+│       └── private.pem             # RSA private key used for decryption
+
+
 
